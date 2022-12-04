@@ -1,7 +1,6 @@
 // Import Employee class
 const Employee = require('../lib/employee');
 
-
 test('create employee object', () => {
     // instantiate new  Employee class
     const employee = new Employee('Leo', 2,'kingleo@gmail.com');
