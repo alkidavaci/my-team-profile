@@ -15,3 +15,17 @@ test('create intern object', () => {
     // school is string
     expect(intern.school).toEqual(expect.any(String))
 });
+
+// Test getSchool method
+test("getSchool method return github.", () => {
+    const school = "Leo";
+    const intern = new Intern(school);
+    expect(intern.getSchool()).toBe(school);
+});
+
+// Test getRole method
+test("getRole method return role.", () => {
+    const role = "Engineer";
+    const intern = new Intern(role);
+    expect(intern.getRole()).toBe(role);
+});
