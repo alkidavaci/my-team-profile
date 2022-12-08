@@ -236,8 +236,27 @@ const promptManager = () => {
         } else if (nextTeamMember === 'Intern') {
           promptIntern();
         } else {
-          console.log(members)
-          
+          // Call function to create html file
+          writeHtml();
         }
     });
   };
+
+// Function to create index.html file
+function writeHtml(){
+
+  const htmlGenerated = generateFile(members)
+    
+    fs.writeFile('./dist/index.html', htmlGenerated, (err) => {
+      if (err) {
+        return console.log(err);
+      }
+        // Then alert the user the file has been successfully generated
+        console.log('My Team Profile page  has been created!');
+      });
+    
+    };
+    
+    // Call function
+    promptManager()
+     .then(nextMember)
