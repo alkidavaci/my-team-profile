@@ -146,3 +146,71 @@ const promptManager = () => {
                
     });
   };
+
+  // Prompt for Intern
+  const promptIntern = () => {
+     
+    return inquirer
+      .prompt([
+        {
+          type: 'input',
+          name: 'name',
+          message: 'What is your interns name?',
+          validate: (name) => {
+            if (name) {
+              return true;
+            } else {
+              console.log(' Please enter a name!');
+              return false;
+            }
+          },
+        },
+        {
+          type: 'input',
+          name: 'id',
+          message: 'Enter employee ID for the intern:',
+          validate: (id) => {
+            if (!isNaN(id)) {
+              return true;
+            } else {
+              console.log(' Please enter an ID number!');
+              return false;
+            }
+          },
+        },
+        {
+          type: 'input',
+          name: 'email',
+          message: 'Enter email address for the intern:',
+          validate: function (email) {
+            const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            if(!emailValid.test(email)) {
+                return " Please enter a valid email address!"
+                }
+            return true
+            },
+        },
+        {
+          type: 'input',
+          name: 'school',
+          message: 'Enter the interns school:',
+          validate: (school) => {
+            if (school) {
+              return true;
+            } else {
+              console.log(' Please enter a school!');
+              return false;
+            }
+          },
+        },
+      ])
+      .then((internData) => {
+        // Destructuring assignment for intern inputs object
+        const { name, id, email, school } = internData;
+        //Instantiation of Intern class
+        const teamMember = new Intern(name, id, email, school);
+  
+        members.push(teamMember);
+        
+      });
+  };
