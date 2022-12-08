@@ -49,4 +49,61 @@ const generateIntern = intern => {
     </div>
 </div>`;
 };
- 
+// Variables declaration
+ let memberHtml = [];
+ let membersCards ;
+
+// Create html code for team members
+generateFile = members => {
+   
+      for ( i = 0; i < members.length; i++ ) {
+        
+      if (members[i].getRole() === "Manager"){
+        const managerHtml = generateManager(members[i]);
+        memberHtml.push(managerHtml)
+      }
+      if (members[i].getRole() === "Engineer"){
+        const engineerHtml =  generateEngineer(members[i])
+        memberHtml.push(engineerHtml)
+      }
+      if (members[i].getRole() === "Intern"){
+        const internHtml = generateIntern(members[i])
+        memberHtml.push(internHtml)
+      }
+    } 
+   
+     membersCards = memberHtml.join('')
+     console.log(membersCards)
+    const generateTeam = generatePage(membersCards); 
+    return generateTeam;
+  }
+
+// creates html page
+const generatePage = function (membersCards) {
+    return`
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Team Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://kit.fontawesome.com/c502137733.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <span class="navbar-brand w-100 text-center">My Team Profile</span>
+        </nav>
+    </header>
+    <main>
+    ${membersCards}
+    </main>
+</body>
+</html>`};
+
+// Export generatePage
+module.exports = generateFile;
