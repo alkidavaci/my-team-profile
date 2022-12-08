@@ -143,7 +143,8 @@ const promptManager = () => {
         const teamMember = new Engineer (name, id, email, githubUser);
   
         members.push(teamMember);
-               
+        // Call function to create nex team member
+        nextMember();       
     });
   };
 
@@ -211,6 +212,32 @@ const promptManager = () => {
         const teamMember = new Intern(name, id, email, school);
   
         members.push(teamMember);
-        
+        // Call function to create next team member
+        nextMember();
       });
+  };
+
+  //  Add next Member
+  const nextMember = () => {
+    return inquirer
+      .prompt([
+        {
+          type: 'list',
+          name: 'nextTeamMember',
+          message: 'Please choose if you want to add a team member: ',
+          choices: ['Engineer', 'Intern', 'No more member to add'],
+        },
+      ])
+      .then((data) => {
+        let {nextTeamMember} = data;
+
+        if (nextTeamMember === 'Engineer') {
+          promptEngineer();
+        } else if (nextTeamMember === 'Intern') {
+          promptIntern();
+        } else {
+          console.log(members)
+          
+        }
+    });
   };
