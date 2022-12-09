@@ -1,3 +1,5 @@
+const generateFile = require("./src/generateTemplate")
+
 // Packages require
 const inquirer = require("inquirer");
 const fs = require("fs");
@@ -69,13 +71,14 @@ const promptManager = () => {
         },
       ])
       .then((managerData) => {
+        console.log(managerData)
         // Destructuring assignment for manager inputs object
         const { name, id, email, officeNumber } = managerData;
         //Instantiation of Manager class 
         const teamMember = new Manager(name, id, email, officeNumber);
-
+        
         members.push(teamMember);
-                       
+                               
       });
   };
 

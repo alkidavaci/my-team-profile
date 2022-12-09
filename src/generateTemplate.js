@@ -73,7 +73,7 @@ generateFile = members => {
     } 
    
      membersCards = memberHtml.join('')
-     console.log(membersCards)
+     
     const generateTeam = generatePage(membersCards); 
     return generateTeam;
   }

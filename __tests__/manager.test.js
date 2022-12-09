@@ -4,7 +4,7 @@ const Manager = require('../lib/manager');
 
 test('create manager object', () => {
     // instantiate new  manager class
-    const manager = new Manager('Leo', 2,'7187187187');
+    const manager = new Manager('Leo', 2, 'kindleo@gmail.com', 205);
 
     // creates object
     expect(typeof(manager)).toBe('object')
@@ -12,20 +12,11 @@ test('create manager object', () => {
     expect(manager.name).toEqual(expect.any(String));
     // id is number
     expect(manager.id).toEqual(expect.any(Number));
+    // email contains '@'
+    expect(manager.email).toContain("@");
+    // email is string
+    expect(manager.email).toEqual(expect.any(String));
     // office number is number
-    expect(manager.officeNum).toEqual(expect.any(Number))
+    expect(manager.officeNumber).toEqual(expect.any(Number))
 });
 
-// Test getOfficeNum method
-test("getOfficeNum method return github.", () => {
-    const officeNum = "Leo";
-    const manager = new Manager(officeNum);
-    expect(manager.getOfficeNum()).toBe(officeNum);
-});
-
-// Test getRole method
-test("getRole method return role.", () => {
-    const role = "Manager";
-    const manager = new Manager(role);
-    expect(manager.getRole()).toBe(role);
-});
