@@ -250,7 +250,7 @@ function writeHtml(){
 
   const htmlGenerated = generateFile(members)
     
-    fs.writeFile('./dist/index.html', htmlGenerated, (err) => {
+    fs.writeFile('./output/index.html', htmlGenerated, (err) => {
       if (err) {
         return console.log(err);
       }
